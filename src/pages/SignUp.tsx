@@ -1,5 +1,12 @@
 import React from "react";
+import { IonPage, IonContent } from "@ionic/react";
 
-const SignUp = () => <h1>Sign Up</h1>;
+const SignUp = () => (
+  <IonPage>
+    <IonContent>
+      <h1>Sign In</h1>
+    </IonContent>
+  </IonPage>
+);
 
 export default SignUp;
