@@ -7,39 +7,31 @@ import {
   IonIcon,
   IonLabel
 } from "@ionic/react";
-import { Route, Redirect } from "react-router";
 import { person, pricetag, basket, stats } from "ionicons/icons";
 
-import Client from "../pages/Clients";
-import Product from "../pages/Product";
-import Sell from "../pages/Sell";
+import * as Routes from "../constants/routes";
 
 const Tabs: FC = () => (
   <IonTabs>
-    <IonRouterOutlet>
-      <Route path='/client' component={Client} exact={true} />
-      <Route path='/product' component={Product} exact={true} />
-      <Route path='/sell' component={Sell} exect={true} />
-      <Redirect path='/' to='/client' exact={true} />
-    </IonRouterOutlet>
+    <IonRouterOutlet />
 
     <IonTabBar slot='bottom'>
-      <IonTabButton tab='tab1' href='/client'>
+      <IonTabButton tab='tab1' href={Routes.CLIENT}>
         <IonIcon icon={person} />
         <IonLabel>Clients</IonLabel>
       </IonTabButton>
 
-      <IonTabButton tab='tab2' href='/product'>
+      <IonTabButton tab='tab2' href={Routes.PRODUCT}>
         <IonIcon icon={pricetag} />
         <IonLabel>Products</IonLabel>
       </IonTabButton>
 
-      <IonTabButton tab='tab3' href='/sell'>
+      <IonTabButton tab='tab3' href={Routes.SELL}>
         <IonIcon icon={basket} />
         <IonLabel>Sells</IonLabel>
       </IonTabButton>
 
-      <IonTabButton tab='tab4' href='/stats'>
+      <IonTabButton tab='tab4' href={Routes.STATS}>
         <IonIcon icon={stats} />
         <IonLabel>Reports</IonLabel>
       </IonTabButton>
