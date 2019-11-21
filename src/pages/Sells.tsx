@@ -1,18 +1,18 @@
 import React from "react";
 import {
-  IonContent,
   IonHeader,
+  IonToolbar,
   IonPage,
   IonTitle,
-  IonToolbar
+  IonContent
 } from "@ionic/react";
 
-const Tab2: React.FC = () => {
+const Sells: React.FC = () => {
   return (
     <IonPage>
       <IonHeader>
         <IonToolbar>
-          <IonTitle>Product</IonTitle>
+          <IonTitle>Sell</IonTitle>
         </IonToolbar>
       </IonHeader>
 
@@ -21,4 +21,4 @@ const Tab2: React.FC = () => {
   );
 };
 
-export default Tab2;
+export default Sells;
