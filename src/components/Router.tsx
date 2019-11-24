@@ -4,9 +4,9 @@ import { Route, Redirect, withRouter, RouteComponentProps } from "react-router";
 import * as Routes from "../constants/routes";
 
 import Tabs from "../components/Tabs";
-import Clients from "../pages/Clients";
-import Products from "../pages/Products";
-import Sells from "../pages/Sells";
+import Clients from "../pages/ClientsList";
+import Products from "../pages/ProductsList";
+import Sells from "../pages/SellList";
 import Stats from "../pages/Stats";
 import SignUp from "../pages/SignUp";
 import SignIn from "../pages/SignIn";
