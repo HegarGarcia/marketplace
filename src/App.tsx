@@ -1,16 +1,19 @@
-import React from "react";
+import React, { FC } from "react";
 import { IonReactRouter } from "@ionic/react-router";
 import { IonApp } from "@ionic/react";
 import "./styles";
 
 import Router from "./components/Router";
+import { AuthProvider } from "./context/auth";
 
-const App: React.FC = () => {
+const App: FC = () => {
   return (
     <IonApp>
-      <IonReactRouter>
-        <Router />
-      </IonReactRouter>
+      <AuthProvider>
+        <IonReactRouter>
+          <Router />
+        </IonReactRouter>
+      </AuthProvider>
     </IonApp>
   );
 };
