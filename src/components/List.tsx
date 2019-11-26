@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { IonList, IonItem, IonLabel, IonAvatar } from "@ionic/react";
+import { IonList } from "@ionic/react";
 import ListItem from "./ListItem";
 
 export interface Item {
