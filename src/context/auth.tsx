@@ -12,25 +12,19 @@ interface SignUpParams {
   username: string;
 }
 
-interface AuthContextType {
-  user: firebase.User | null;
-  error: string;
-  signInWithEmailAndPassword: (params: SignInParams) => void;
-  signUpWithEmailAndPassword: (params: SignUpParams) => void;
-  signOut: () => void;
-}
-
-export const AuthContext = createContext<AuthContextType>({
+const authContextDefaultValue = {
   user: auth.currentUser,
-  error: "",
-  signInWithEmailAndPassword: (params: SignInParams) => {},
-  signUpWithEmailAndPassword: (params: SignUpParams) => {},
-  signOut: () => {}
-});
+  signInWithEmailAndPassword: (params: SignInParams) => Promise.resolve(),
+  signUpWithEmailAndPassword: (params: SignUpParams) => Promise.resolve(),
+  signOut: () => Promise.resolve()
+};
+
+export const AuthContext = createContext<typeof authContextDefaultValue>(
+  authContextDefaultValue
+);
 
 export const AuthProvider: FC = props => {
   const [user, setUser] = useState(auth.currentUser);
-  const [error, setError] = useState("");
 
   auth.onAuthStateChanged(
     userCredentials => userCredentials && setUser(userCredentials)
@@ -69,7 +63,7 @@ export const AuthProvider: FC = props => {
     }
 
     if (errorMessage) {
-      setError(errorMessage);
+      throw errorMessage;
     }
   };
 
@@ -106,7 +100,7 @@ export const AuthProvider: FC = props => {
     }
 
     if (errorMessage) {
-      setError("Error en creación de cuenta");
+      throw errorMessage;
     }
   };
 
@@ -118,7 +112,6 @@ export const AuthProvider: FC = props => {
     <AuthContext.Provider
       value={{
         user,
-        error,
         signInWithEmailAndPassword,
         signUpWithEmailAndPassword,
         signOut

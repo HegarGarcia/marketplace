@@ -1,4 +1,5 @@
 import React, { FC } from "react";
+import { Route, Redirect } from "react-router";
 import {
   IonTabs,
   IonRouterOutlet,
@@ -10,10 +11,29 @@ import {
 import { person, pricetag, basket, stats } from "ionicons/icons";
 
 import * as Routes from "../constants/routes";
+import PrivateRoute from "../components/PrivateRoute";
+import {
+  ClientList,
+  ProductList,
+  SellList,
+  Stats,
+  SignUp,
+  SignIn
+} from "../pages";
 
 const Tabs: FC = () => (
   <IonTabs>
-    <IonRouterOutlet />
+    <IonRouterOutlet>
+      <PrivateRoute path={Routes.CLIENT} component={ClientList} />
+      <PrivateRoute path={Routes.PRODUCT} component={ProductList} />
+      <PrivateRoute path={Routes.SELL} component={SellList} />
+      <PrivateRoute path={Routes.STATS} component={Stats} />
+
+      <Route path={Routes.SIGNUP} component={SignUp} />
+      <Route path={Routes.SIGNIN} component={SignIn} />
+
+      <Redirect path={Routes.ROOT} to={Routes.CLIENT} exact={true} />
+    </IonRouterOutlet>
 
     <IonTabBar slot='bottom'>
       <IonTabButton tab='tab1' href={Routes.CLIENT}>
