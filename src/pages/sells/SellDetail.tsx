@@ -153,10 +153,12 @@ const SellDetail: FC<ClientDetailProps> = ({ match }) => {
       amount: product.amount - sell.amount
     });
 
-    const validSell = {
+    const validSell: Sell = {
       ...sell,
+      timestamp: new Date(),
       client: clientsCollection.doc(sell.client),
       product: productDoc,
+      earnings: sell.amount * (product.price - product.cost),
       total: sell.amount * product.price
     };
 

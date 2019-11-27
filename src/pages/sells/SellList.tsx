@@ -60,13 +60,18 @@ interface SellWithProduct {
   id?: string;
   product: Product;
   amount: number;
-  total: number;
+  earnings: number;
 }
 
-const sellToItem = ({ id, product, total }: SellWithProduct): Item => ({
+const sellToItem = ({
+  id,
+  product,
+  amount,
+  earnings
+}: SellWithProduct): Item => ({
   id: id!,
   title: (product as Product).description,
-  subtitle: `$${total}`,
+  subtitle: `Amount: ${amount} - Earnings: $${earnings}`,
   photoUrl: (product as Product).photoUrl
 });
 

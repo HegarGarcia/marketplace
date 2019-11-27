@@ -50,7 +50,7 @@ const productToItem = ({
 }: Product): Item => ({
   id: id!,
   title: description,
-  subtitle: `$${price}`,
+  subtitle: `Price: $${price}`,
   photoUrl
 });
 
