@@ -3,7 +3,7 @@ import { IonList } from "@ionic/react";
 import ListItem from "./ListItem";
 
 export interface Item {
-  id: string;
+  id?: string;
   photoUrl?: string;
   title: string;
   subtitle: string;
@@ -11,14 +11,14 @@ export interface Item {
 
 interface ListProps {
   items: Item[];
-  onItemClick: (id: string) => void;
+  rootPath: string;
 }
 
-const List: FC<ListProps> = ({ items, onItemClick }) => {
+const List: FC<ListProps> = ({ items, rootPath }) => {
   return (
     <IonList>
-      {items.map(props => (
-        <ListItem key={props.id} {...props} onClick={onItemClick} />
+      {items.map(({ id, ...props }) => (
+        <ListItem key={id} {...props} href={`${rootPath}/detail/${id}`} />
       ))}
     </IonList>
   );

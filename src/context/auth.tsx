@@ -26,9 +26,7 @@ export const AuthContext = createContext<typeof authContextDefaultValue>(
 export const AuthProvider: FC = props => {
   const [user, setUser] = useState(auth.currentUser);
 
-  auth.onAuthStateChanged(
-    userCredentials => userCredentials && setUser(userCredentials)
-  );
+  auth.onAuthStateChanged(userCredentials => setUser(userCredentials));
 
   const signInWithEmailAndPassword = async ({
     email,
@@ -42,7 +40,7 @@ export const AuthProvider: FC = props => {
       );
 
       if (!userCredentials.user!.emailVerified) {
-        auth.signOut();
+        await signOut();
         errorMessage = "Cuenta no verificada";
       }
     } catch (err) {

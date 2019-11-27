@@ -1,24 +1,57 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import {
   IonContent,
-  IonHeader,
   IonPage,
-  IonTitle,
-  IonToolbar
+  IonFab,
+  IonFabButton,
+  IonIcon
 } from "@ionic/react";
+import { add } from "ionicons/icons";
+import List, { Item } from "../../components/List";
+import { productsCollection } from "../../firebase";
+import { Product } from "../../firebase/product.interface";
+import Header from "../../components/Header";
+import { PRODUCT } from "../../constants/routes";
 
-const Products: React.FC = () => {
+const ProductList: React.FC = () => {
+  const [clients, setClients] = useState<Item[]>([]);
+
+  useEffect(() => {
+    return productsCollection.onSnapshot(snap => {
+      const docs: Item[] = snap.docs.map(doc =>
+        productToItem({ id: doc.id, ...doc.data() } as Product)
+      );
+      setClients(docs);
+    });
+  }, []);
+
   return (
     <IonPage>
-      <IonHeader>
-        <IonToolbar>
-          <IonTitle>Product</IonTitle>
-        </IonToolbar>
-      </IonHeader>
+      <Header title='Product' withBackButton={false} />
 
-      <IonContent />
+      <IonContent>
+        <List items={clients} rootPath={PRODUCT} />
+
+        <IonFab vertical='bottom' horizontal='end'>
+          <IonFabButton routerLink={`${PRODUCT}/detail`}>
+            <IonIcon icon={add} />
+          </IonFabButton>
+        </IonFab>
+      </IonContent>
     </IonPage>
   );
 };
 
-export default Products;
+const productToItem = ({
+  description,
+  price,
+  photoUrl,
+  id
+}: Product): Item => ({
+  id: id!,
+  title: description,
+  subtitle: `$${price}`,
+  photoUrl
+});
+
+export default ProductList;

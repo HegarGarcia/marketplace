@@ -9,11 +9,11 @@ import Tabs from "./components/Tabs";
 const App: FC = () => {
   return (
     <IonApp>
-      <AuthProvider>
-        <IonReactRouter>
+      <IonReactRouter>
+        <AuthProvider>
           <Tabs />
-        </IonReactRouter>
-      </AuthProvider>
+        </AuthProvider>
+      </IonReactRouter>
     </IonApp>
   );
 };

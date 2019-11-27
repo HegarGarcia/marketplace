@@ -11,3 +11,6 @@ export const productsCollection = firestore.collection("products");
 export const sellsCollection = firestore.collection("sells");
 
 export const auth = firebase.auth();
+export * from "./client.interface";
+export * from "./product.interface";
+export * from "./sell.interface";

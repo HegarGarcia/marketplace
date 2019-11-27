@@ -15,7 +15,7 @@ const PrivateRoute = ({ component: Component, ...rest }: PrivateRouteProps) => {
   const render = (props: any) =>
     isLoggedIn ? <Component {...props} /> : <Redirect to={SIGNIN} />;
 
-  return <Route {...rest} render={render} exact={true} />;
+  return <Route {...rest} render={render} />;
 };
 
 export default PrivateRoute;

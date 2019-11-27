@@ -1,0 +1,5 @@
+.product_img {
+  max-width: 7rem;
+  overflow: hidden;
+  margin: 0 auto;
+}

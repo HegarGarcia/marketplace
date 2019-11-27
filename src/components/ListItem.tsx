@@ -2,33 +2,23 @@ import React, { FC } from "react";
 import { IonItem, IonLabel, IonAvatar } from "@ionic/react";
 import { Item } from "./List";
 
-interface ListItemProps {
-  onClick: (id: string) => void;
+interface ListItemProps extends Item {
+  href: string;
 }
 
-const ListItem: FC<ListItemProps & Item> = ({
-  id,
-  photoUrl,
-  title,
-  subtitle,
-  onClick
-}) => {
-  const onClickHandler = () => onClick(id);
-
+const ListItem: FC<ListItemProps> = ({ photoUrl, title, subtitle, href }) => {
   return (
-    <div onClick={onClickHandler}>
-      <IonItem button={true}>
-        {photoUrl && (
-          <IonAvatar slot='start'>
-            <img src={photoUrl} alt='Profile' />
-          </IonAvatar>
-        )}
-        <IonLabel>
-          <h2>{title}</h2>
-          <p>{subtitle}</p>
-        </IonLabel>
-      </IonItem>
-    </div>
+    <IonItem button={true} routerLink={href}>
+      {photoUrl && (
+        <IonAvatar slot='start'>
+          <img src={photoUrl} alt='Profile' />
+        </IonAvatar>
+      )}
+      <IonLabel>
+        <h2>{title}</h2>
+        <p>{subtitle}</p>
+      </IonLabel>
+    </IonItem>
   );
 };
 
