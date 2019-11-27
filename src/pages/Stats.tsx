@@ -8,7 +8,6 @@ import {
   IonLabel,
   IonDatetime
 } from "@ionic/react";
-import { Header } from "../components";
 import { sellsCollection, Sell } from "../firebase";
 
 const average = (array: number[]) =>

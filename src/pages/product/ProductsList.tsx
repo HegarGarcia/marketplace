@@ -10,7 +10,6 @@ import { add } from "ionicons/icons";
 import List, { Item } from "../../components/List";
 import { productsCollection } from "../../firebase";
 import { Product } from "../../firebase/product.interface";
-import Header from "../../components/Header";
 import { PRODUCT } from "../../constants/routes";
 
 const ProductList: React.FC = () => {

@@ -10,7 +10,6 @@ import { add } from "ionicons/icons";
 import List, { Item } from "../../components/List";
 import { sellsCollection, Product } from "../../firebase";
 import { Sell } from "../../firebase";
-import Header from "../../components/Header";
 import { SELL } from "../../constants/routes";
 
 const SellsList: FC = () => {
