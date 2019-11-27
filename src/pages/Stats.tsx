@@ -82,8 +82,6 @@ const Stats: FC = () => {
 
   return (
     <IonPage>
-      <Header title='Stats' withBackButton={false} withSignOut={true} />
-
       <IonContent>
         <IonList>
           <IonListHeader>Daily</IonListHeader>

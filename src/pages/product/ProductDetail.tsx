@@ -74,7 +74,7 @@ const ProductDetail: FC<ClientDetailProps> = ({ match }) => {
 
   return (
     <IonPage>
-      <Header title='Product' withBackButton={true} withSignOut={false} />
+      <Header title='Product' withBackButton={true} />
 
       <IonContent>
         <form className='form'>

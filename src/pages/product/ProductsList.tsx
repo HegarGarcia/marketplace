@@ -27,8 +27,6 @@ const ProductList: React.FC = () => {
 
   return (
     <IonPage>
-      <Header title='Product' withBackButton={false} />
-
       <IonContent>
         <List items={clients} rootPath={PRODUCT} />
 

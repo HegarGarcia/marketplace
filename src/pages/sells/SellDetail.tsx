@@ -178,7 +178,7 @@ const SellDetail: FC<ClientDetailProps> = ({ match }) => {
 
   return (
     <IonPage>
-      <Header title='Sell' withBackButton={true} withSignOut={false} />
+      <Header title='Sell' withBackButton={true} />
 
       <IonContent>
         <form className='form'>

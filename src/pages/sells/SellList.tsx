@@ -41,8 +41,6 @@ const SellsList: FC = () => {
 
   return (
     <IonPage>
-      <Header title='Sell' withBackButton={false} />
-
       <IonContent>
         <List items={sells} rootPath={SELL} />
 

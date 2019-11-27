@@ -27,7 +27,7 @@ const Clients: FC = () => {
 
   return (
     <IonPage>
-      <Header title='Clients' withBackButton={false} />
+      <Header title='Clients' withSignOut={true} />
 
       <IonContent>
         <List items={clients} rootPath={CLIENT} />

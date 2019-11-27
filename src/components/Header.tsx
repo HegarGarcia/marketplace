@@ -10,15 +10,15 @@ import {
 import { AuthContext } from "../context/auth";
 
 interface HeaderProps {
-  title: string;
-  withBackButton: boolean;
+  title?: string;
+  withBackButton?: boolean;
   withSignOut?: boolean;
 }
 
 const Header: FC<HeaderProps> = ({
   title,
-  withBackButton,
-  withSignOut = true
+  withBackButton = false,
+  withSignOut = false
 }) => {
   const { signOut } = useContext(AuthContext);
 
@@ -30,7 +30,7 @@ const Header: FC<HeaderProps> = ({
             <IonBackButton />
           </IonButtons>
         )}
-        <IonTitle>{title}</IonTitle>
+        {title && <IonTitle>{title}</IonTitle>}
         {withSignOut && (
           <IonButtons slot='primary'>
             <IonButton onClick={signOut}>Log Out</IonButton>
