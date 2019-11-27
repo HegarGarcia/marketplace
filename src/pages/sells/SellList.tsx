@@ -8,7 +8,7 @@ import {
 } from "@ionic/react";
 import { add } from "ionicons/icons";
 import List, { Item } from "../../components/List";
-import { sellsCollection, Product, productsCollection } from "../../firebase";
+import { sellsCollection, Product } from "../../firebase";
 import { Sell } from "../../firebase";
 import Header from "../../components/Header";
 import { SELL } from "../../constants/routes";
@@ -16,27 +16,28 @@ import { SELL } from "../../constants/routes";
 const SellsList: FC = () => {
   const [sells, setSells] = useState<Item[]>([]);
 
-  useEffect(() => {
-    sellsCollection.onSnapshot(async ({ docs }) => {
-      const items = await Promise.all(
-        docs.map(async doc => {
-          const sell = {
-            id: doc.id,
-            ...(doc.data() as Sell)
-          };
+  useEffect(
+    () =>
+      sellsCollection.onSnapshot(async ({ docs }) => {
+        const items = await Promise.all(
+          docs.map(async doc => {
+            const sell = {
+              id: doc.id,
+              ...(doc.data() as Sell)
+            };
 
-          const product = await productsCollection
-            .doc(sell.product)
-            .get()
-            .then(productDoc => productDoc.data() as Product);
+            const product = await sell.product
+              .get()
+              .then(productDoc => productDoc.data() as Product);
 
-          return sellToItem({ ...sell, product });
-        })
-      );
+            return sellToItem({ ...sell, product });
+          })
+        );
 
-      setSells(items);
-    });
-  }, []);
+        setSells(items);
+      }),
+    []
+  );
 
   return (
     <IonPage>

@@ -29,9 +29,41 @@ const Tabs: FC = () => {
   ) : (
     <IonTabs>
       <IonRouterOutlet>
-        <PrivateRoute path={Routes.CLIENT} component={Pages.Client} />
-        <PrivateRoute path={Routes.PRODUCT} component={Pages.Product} />
-        <PrivateRoute path={Routes.SELL} component={Pages.Sell} />
+        <PrivateRoute
+          path={`${Routes.CLIENT}/detail`}
+          component={Pages.ClientDetail}
+          exact={true}
+        />
+        <PrivateRoute
+          path={`${Routes.CLIENT}/detail/:id`}
+          component={Pages.ClientDetail}
+          exact={true}
+        />
+        <PrivateRoute path={Routes.CLIENT} component={Pages.ClientsList} />
+
+        <PrivateRoute
+          path={`${Routes.PRODUCT}/detail`}
+          component={Pages.ProductDetail}
+          exact={true}
+        />
+        <PrivateRoute
+          path={`${Routes.PRODUCT}/detail/:id`}
+          component={Pages.ProductDetail}
+          exact={true}
+        />
+        <PrivateRoute path={Routes.PRODUCT} component={Pages.ProductsList} />
+
+        <PrivateRoute
+          path={`${Routes.SELL}/detail`}
+          component={Pages.SellDetail}
+          exact={true}
+        />
+        <PrivateRoute
+          path={`${Routes.SELL}/detail/:id`}
+          component={Pages.SellDetail}
+          exact={true}
+        />
+        <PrivateRoute path={Routes.SELL} component={Pages.SellList} />
         <PrivateRoute path={Routes.STATS} component={Pages.Stats} />
 
         <Redirect path='*' to={Routes.CLIENT} exact={true} />

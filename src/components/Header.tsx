@@ -27,7 +27,7 @@ const Header: FC<HeaderProps> = ({
       <IonToolbar>
         {withBackButton && (
           <IonButtons slot='start'>
-            <IonBackButton defaultHref='/' />
+            <IonBackButton />
           </IonButtons>
         )}
         <IonTitle>{title}</IonTitle>

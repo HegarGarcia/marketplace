@@ -51,8 +51,12 @@ const ProductDetail: FC<ClientDetailProps> = ({ match }) => {
     }
   }, [id]);
 
-  const updateField = (e: any) =>
-    dispatch({ type: "field", field: e.target.name, value: e.target.value });
+  const updateField = ({ target }: any) =>
+    dispatch({
+      type: "field",
+      field: target.name,
+      value: target.type === "number" ? +target.value : target.value
+    });
 
   const deleteProduct = async () => {
     await productsCollection.doc(id).delete();
